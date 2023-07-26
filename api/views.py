@@ -41,7 +41,7 @@ def get_coordinates(request):
             'atoms': atoms,
             'bonds': bonds
         }
-
+        print(response)
         return JsonResponse(response)
 
     return JsonResponse({'error': 'Invalid request'})
