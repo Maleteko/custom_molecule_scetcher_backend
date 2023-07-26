@@ -1,0 +1,44 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Caches
+*.cache/
+*.log
+*.egg-info/
+*.egg
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Django static and media files
+staticfiles/
+media/
+
+# Database files
+*.sqlite3
+db.sqlite3
+
+# Environment variables and sensitive information
+.env
+
+# Secret key file
+secret_key.py
+
+# IDE and editor files
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Compiled JavaScript files
+*.js.map
+
+# Virtual environment
+venv/
