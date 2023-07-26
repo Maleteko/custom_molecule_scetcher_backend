@@ -13,6 +13,8 @@ def get_coordinates(request):
 
         # Use RDKit to generate the coordinates
         mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            return JsonResponse({'error': 'Invalid SMILES'})
         Chem.Kekulize(mol)
         AllChem.Compute2DCoords(mol)
         # Extract the atom coordinates and bonds
