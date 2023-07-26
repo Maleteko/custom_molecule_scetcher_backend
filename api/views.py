@@ -4,6 +4,8 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 import json
 
+COORDINATES_MULITPLIER = 100
+
 def get_coordinates(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -11,6 +13,7 @@ def get_coordinates(request):
 
         # Use RDKit to generate the coordinates
         mol = Chem.MolFromSmiles(smiles)
+        Chem.Kekulize(mol)
         AllChem.Compute2DCoords(mol)
         # Extract the atom coordinates and bonds
         atoms = []
@@ -20,8 +23,8 @@ def get_coordinates(request):
             atoms.append(
                 {
                     'element': atom.GetSymbol(),
-                    'x': position.x,
-                    'y': position.y,
+                    'x': position.x * COORDINATES_MULITPLIER,
+                    'y': position.y * COORDINATES_MULITPLIER,
                 }
             )
 
@@ -36,7 +39,6 @@ def get_coordinates(request):
             'atoms': atoms,
             'bonds': bonds
         }
-        print(response)
 
         return JsonResponse(response)
 
